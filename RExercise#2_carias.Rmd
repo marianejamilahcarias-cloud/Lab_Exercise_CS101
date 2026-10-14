@@ -21,6 +21,77 @@ a %/% b
 2 ^10
 ```
 
+Question #1:
+
+Set up a vector named age, consisting of 15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8.
+
+(Your answer here)
+
+
+
+How many data points?
+(Your answer here)
+
+
+
+Find the reciprocal of age?
+(Your answer here)
+
+
+
+Assign also new_age <- c(age, 0, age). What happens to new_age?
+(Your answer here)
+
+
+
+d: Find the minimum and the maximum value of age.
+
+(Your answer here)
+
+
+
+Question #2:
+
+rep(c("A","B"), each = 2) and rep(c("A","B"), times = 2) both produce a vector of length 4, but with different element orders.
+Explain in your own words the difference between each and times.
+(Your answer here)
+
+ Question #3:
+
+Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5). What does each argument (by vs length.out) control, and when would you use one over the other in a real analysis?
+(Your answer here)
+
+
+
+Question #4:
+
+Generate a sequence for 20 to 60. Name the vector as vec_num
+(Your answer here)
+
+
+
+Get the mean for vec_num.
+(Your answer here)
+
+
+
+Get the sum for vec_num.
+(Your answer here)
+
+
+
+d: How many data points are there in vec_num?
+
+(Your answer here)
+
+
+
+
+
+
+
+
+
 ## Part B - Basic Data Types
 ```{r}
  x <- 42
