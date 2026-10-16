@@ -1,0 +1,102 @@
+---
+title: "RExercise#3_carias.Rmd"
+author: "Mariane Jamilah Carias"
+date: "2026-10-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ ### PART A
+```{r}
+# TODO: Create a numeric vector called scores containing: 88, 92, 79, 95, 84
+# Then create a character vector called subjects containing:
+# "Math", "Science", "English", "History", "PE"
+scores <- c(88, 92, 79, 95, 84)
+subjects <- c("Math", "Science", "English", "History", "PE")
+scores
+subjects
+```
+```{r}
+# TODO: Use seq() to create a vector called odds containing odd numbers
+# from 1 to 19 (hint: use the "by" argument)
+# TODO: Use seq() with length.out to create a vector of exactly 5 evenly
+# spaced numbers between 0 and 1
+odds <- seq(from = 1, to = 19, by = 2)
+seq(from = 0, to = 1, length.out = 5)
+```
+```{r}
+# TODO: Use rep() to create a vector that repeats the value "A" 4 times
+rep("A", times = 4)
+# TODO: Use rep() with the "each" argument to turn c("A", "B") into
+# "A" "A" "B" "B" (each element repeated twice, in order)
+rep(c("A", "B"), each = 2)
+# TODO: Use rep() with the "times" argument to turn c("A", "B") into
+# "A" "B" "A" "B" (the whole sequence repeated twice)
+rep(c("A", "B"), times = 2)
+
+```
+# Question #1:
+```{r}
+# Set up a vector named age, consisting of 15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8.
+age <- c(15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46,
+25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8)
+```
+```{r}
+# a. How many data points?
+length(age) 
+#gives 34 data points.
+```
+```{r}
+# b. Find the reciprocal of age?
+1 / age  
+#divides 1 by each number in the age vector.
+```
+```{r}
+# c. Assign also new_age <- c(age, 0, age) . What happens to new_age ?
+new_age <- c(age, 0, age)
+# Answer: it combines age, 0, and age into one vector of length 69.
+```
+```{r}
+# d: Find the minimum and the maximum value of age.
+#The minimum is 8 using min(age), and the maximum is 57 using max(age)
+```
+# Question #2:
+```{r}
+# rep(c("A", "B"), each = 2) and rep(c("A", "B"), times = 2) both produce a vector of length 4, but with different element orders.
+# Explain in your own words the difference between each and times .
+# Answer: each repeats every item two times in a row before moving to the next. times repeats the whole group of items from start to finish.
+```
+```{r}
+# Question #3:
+# Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5) . What does each argument ( by vs length.out ) control, and when would you use one over the other in a real analysis?
+# by sets step size for fixed intervals, length.out sets total point count for fixed samples.
+```
+# Question #3:
+```{r}
+# Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5) . What does each argument ( by vslength.out ) control, and when would you use one over the other in a real analysis?
+# by sets how far apart the numbers are, while length.out sets how many total numbers you get.
+```
+# Question #4:
+```{r}
+# a. Generate a sequence for 20 to 60. Name the vector as vec_num vec_num <- 20:60
+```
+```{r}
+# b. Get the mean for vec_num .
+#mean(vec_num) gives 40.
+```
+```{r}
+# c. Get the sum for vec_num .
+#sum(vec_num) gives 1640.
+```
+```{r}
+# d: How many data points are there in vec_num ?
+#length(vec_num) gives 41 data points.
+```
+```{r}
+```
+
+
+
