@@ -20,11 +20,11 @@ a %/% b
 
 2 ^10
 ```
+```
 **Question #1:**
-17 %/% 5 gives 3 (how many full times 5 fits in 17) and 17 %% 5 gives 2 (the leftover part). Together they rebuild 17 because (3 × 5) + 2 = 17. Converting the leftover part (2 ÷ 5 = 0.4) and adding it to 3 gives 3.4 (17 / 5), which is the full decimal answer.
+Question #1: Normal division 17 / 5 gives the full decimal answer (3.4), integer division 17 %/% 5 counts how many whole times 5 fits in (3), and modulus 17 %% 5 gives the leftover remainder (2), which together reconstruct 17 ($5 \times 3 + 2$).
 
-**Question #2:**
-I predicted 10 %% 3 is 1 and 10 %/% 3 is 3. This was correct because 3 fits into 10 three whole times with 1 remainder.
+**Question #2: My predictions were correct because 3 fits into 10 three times with 1 left over.
 
 ## Part B - Basic Data Types
 ```{r}
@@ -53,11 +53,10 @@ I predicted 10 %% 3 is 1 and 10 %/% 3 is 3. This was correct because 3 fits into
  mode(w)
  mode(v)
 ```
-**Question #3:**
+Question #3:
 typeof(x) returns "double" because R stores numbers as decimals by default. typeof(y) returns "integer" because adding L to 42L tells R to save it specifically as a whole number without decimals.
 
-
-**Question #4:**
+Question #4:
 Yes. typeof() tells you how R stores the data, while class() tells you how R handles it. For example, a factor has typeof() of "integer" because R stores categories using numbers, but its class() is "factor".
 
 ##Part C - Type Conversion
@@ -74,11 +73,12 @@ as.logical(1)
 bad_string <- "hello123"
 as.numeric (bad_string)
 ```
+Question #5: R gives a warning and outputs NA instead of crashing so the script keeps running, but ignoring it can cause missing values to silently mess up later calculations.
 
-**Question:**
+Question #6: I correctly predicted that both as.logical(2) and as.logical(-1) would return TRUE because R treats zero as FALSE and any other number as TRUE.
+
  
 ## Part D - Strings, paste(), and paste0()
-
 ```{r}
 first_name <- "Mariane Jamilah"
 last_name <- "Carias"
@@ -110,4 +110,9 @@ No, it didn't cause an error. paste0() automatically converts numbers to text be
 
 as.numeric("5") + 5
 ```
+Question #9: R makes us convert types manually so it doesn't accidentally guess wrong between doing math to get 10 or combining text to get "55".
 
+Question #10: R likely read the numbers as text strings, which I would fix by checking the type with typeof() and converting the column into numbers using as.numeric() before running sum().
+
+##Conclusion:
+In this lab, I learned that R assigns specific storage types to objects and strictly enforces them instead of doing automatic type conversion during operations. Checking types with functions like typeof() or class() helps identify whether data is stored as text, numeric, or logical before running math functions. Using explicit conversion functions like as.numeric() ensures data is properly formatted, preventing unexpected errors, warnings, or silent NA values during analysis.
