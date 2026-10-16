@@ -1,0 +1,130 @@
+---
+title: "RExercise#4_carias.Rmd"
+author: "Mariane Jamilah Carias"
+date: "2026-10-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part A — Creating Vectors and Lists
+
+- Question #1
+
+```{r q1}
+# a. Vector for worker ages
+worker_age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 43, 53, 41, 51, 35, 24, 33, 41, 53, 40, 18, 44, 38, 41, 48, 27, 39, 19, 30, 61, 54, 58, 26, 18)
+
+# b. Number of data points
+length(worker_age)
+
+# c. Minimum and maximum age
+min(worker_age)
+max(worker_age)
+
+# d. 13th to 18th and 33rd to 35th elements
+worker_age[c(13:18, 33:35)]
+
+# e. All elements except 10th, 20th, 30th, and 40th
+worker_age[-c(10, 20, 30, 40)]
+
+# f. Change 4th, 14th, 24th, and 44th elements to 0
+worker_age_mod <- worker_age
+worker_age_mod[c(4, 14, 24, 44)] <- 0
+worker_age_mod
+
+```
+
+Answers:
+
+a: I made a vector named worker_age storing all 50 values.
+b: The vector contains 50 data points in total.
+c: The lowest age in the group is 17 and the highest age is 61.
+d: The numbers at those positions are 27, 22, 37, 34, 19, 20, 33, 41, and 53.
+e: Taking out those 4 entries leaves 46 numbers in the vector.
+f: I updated the 4th, 14th, 24th, and 44th values to 0 in worker_age_mod.
+---
+
+- Question #2
+
+```{r q2}
+data(rivers)
+
+# a & b. Summary statistics stored in one single vector
+rivers_summary <- c(
+  length = length(rivers),
+  sum = sum(rivers),
+  mean = mean(rivers),
+  median = median(rivers),
+  variance = var(rivers),
+  sd = sd(rivers),
+  min = min(rivers),
+  max = max(rivers)
+)
+
+rivers_summary
+
+```
+
+Answers:
+
+a: The dataset includes 141 rivers with a total length of 83,357 miles, an average of 591.18 miles, a middle value of 425 miles, a variance of 243,908.4, a standard deviation of 493.87 miles, a shortest length of 135 miles, and a longest length of 3,710 miles.
+
+b: All these summary figures are stored together in one named vector called rivers_summary.
+---
+
+- Question #3
+
+```{r q3}
+# a. Create vectors for Forbes dataset
+ranking <- 1:25
+celebrity <- c("Oprah Winfrey", "Tiger Woods", "Madonna", "Beyonce Knowles", "Steffi Graf", "Steven Spielberg", "Howard Stern", "Angelina Jolie", "David Beckham", "Phil Mickelson", "Brad Pitt", "Johnny Depp", "Rush Limbaugh", "Stephen King", "J.K. Rowling", "Bruce Springsteen", "Simon Cowell", "George Lucas", "Kobe Bryant", "Michael Jordan", "George Clooney", "Celine Dion", "Jerry Seinfeld", "Tom Cruise", "Jay-Z")
+pay_millions <- c(275, 115, 110, 87, 85, 150, 50, 27, 50, 40, 28, 72, 33, 45, 300, 70, 75, 45, 45, 45, 25, 100, 85, 30, 35)
+
+# b. Change J.K. Rowling's rank to 15 and pay to 90
+jk_index <- which(celebrity == "J.K. Rowling")
+ranking[jk_index] <- 15
+pay_millions[jk_index] <- 90
+
+# Check updated values
+ranking[jk_index]
+pay_millions[jk_index]
+
+```
+Answers:
+
+a: I set up three vectors—ranking, celebrity, and pay_millions—to hold all 25 records.
+b: I modified J.K. Rowling's rank to 15 and updated her pay to 90 million.
+---
+
+- Question #4
+
+```{r q4}
+# Initial list of 10 vegetables
+my_veggies <- list("Carrot", "Broccoli", "Spinach", "Potato", "Cabbage", "Cucumber", "Tomato", "Onion", "Garlic", "Eggplant")
+my_veggies
+
+# a. Add 2 vegetables at the end
+my_veggies <- c(my_veggies, list("Lettuce", "Cauliflower"))
+my_veggies
+
+# b. Total data points after adding 2
+length(my_veggies)
+
+# c. Add 4 vegetables after position 5
+my_veggies <- append(my_veggies, list("Squash", "Bell Pepper", "Radish", "Zucchini"), after = 5)
+my_veggies
+
+# d. Total data points at the end
+length(my_veggies)
+
+```
+Answers:
+b: The list expanded to 12 total items.
+c: Inserting four items after slot 5 shifted the remaining vegetables down and placed the new ones in slots 6 through 9.
+d: The final list holds 16 total items.
+```
+
+```
