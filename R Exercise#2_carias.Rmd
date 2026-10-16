@@ -105,7 +105,7 @@ No, it didn't cause an error. paste0() automatically converts numbers to text be
 ## Part E — Critical Thinking Challenge
 ```{r}
 # Prediction: It will throw an error because R cannot add text to a number directly.
-"5" + 5
+5 + 5
 # Error in "5" + 5 : non-numeric argument to binary operator
 
 as.numeric("5") + 5
