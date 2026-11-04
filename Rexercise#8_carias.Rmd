@@ -1,0 +1,216 @@
+---
+title: "Rexercise-8"
+author: "Mariane Jamilah Carias"
+date: "2026-11-04"
+output: html_document
+---
+
+# Part A — Creating Data Frames
+
+## Question #1
+
+### a. Create a vector
+
+```{r}
+student_scores <- c(Ana = 78, Ben = 92, Cid = 85, Dex = 92, Eli = 67, Fay = 88, Gio = 74)
+student_scores
+```
+
+### b. Sort the scores in ascending and descending order
+
+```{r}
+# Ascending order
+sort(student_scores)
+
+# Descending order
+sort(student_scores, decreasing = TRUE)
+```
+
+### c. Check if the names stayed attached to their correct values
+
+```{r}
+sorted_asc <- sort(student_scores)
+sorted_asc
+
+# Yes, the names stayed attached to their values. For example, Eli is still 67
+# and Dex is still 92. Because the names are part of the vector, they move
+# together with their scores when sorted.
+```
+
+### d. Create another vectors
+
+```{r}
+subjects <- c("Science", "Math", "English", "Filipino", "PE")
+incomplete <- c(85, NA, 90, 70, NA, 95)
+
+subjects
+incomplete
+```
+
+### e. Sort subjects alphabetically
+
+```{r}
+sort(subjects)
+```
+
+### f. Sort incomplete using sort()
+
+```{r}
+# By default, sort() removes the NA values
+sort(incomplete)
+
+# Using na.last = TRUE keeps the NAs and places them at the end
+sort(incomplete, na.last = TRUE)
+
+# Observation: by default, sort() silently drops the two NA values without any
+# warning. With na.last = TRUE, the NAs are kept and shown at the end.
+```
+
+## Question #2
+
+```{r}
+# Yes, the scores and names were sorted properly because I assigned them
+# together, so the names are part of the scores. This is very important because
+# if the names did not follow their values, the wrong person would be named the
+# top performer and the scores would not be accurate.
+```
+
+## Question #3
+
+```{r}
+# This default behavior is dangerous because sort() silently removes the NA
+# values without any warning or error. If I report "the lowest score" without
+# checking for NA first, the result only reflects the students with recorded
+# scores, so the dataset looks complete when it is not.
+```
+
+## Question #4
+
+### a. order() compared to sort()
+
+```{r}
+order(student_scores)
+sort(student_scores)
+
+# order() returns the positions (index numbers) of the scores arranged in
+# ascending order, while sort() returns the actual sorted values. In short,
+# order() tells us where the values are, and sort() tells us what the values are.
+```
+
+### b. Use order() to index student_scores
+
+```{r}
+student_scores[order(student_scores)]
+sort(student_scores)
+
+identical(student_scores[order(student_scores)], sort(student_scores))
+
+# Yes, they have the same values. order() gives the positions that arrange the
+# scores in ascending order, so using them to index student_scores produces the
+# same result as sort(). identical() returns TRUE, which confirms it.
+```
+
+## Question #5
+
+### a. Create a data frame
+
+```{r}
+name <- c("Ana", "Ben", "Cid", "Dex", "Eli", "Fay", "Gio")
+score <- c(78, 92, 85, 92, 67, 88, 74)
+section <- c("A", "B", "A", "B", "A", "B", "A")
+
+students <- data.frame(name, score, section)
+students
+```
+
+### b. Reorder the ENTIRE students data frame by score
+
+```{r}
+students[order(students$score), ]
+```
+
+### c. Reorder students by score in DESCENDING order
+
+```{r}
+students[order(students$score, decreasing = TRUE), ]
+```
+
+## Question #6
+
+```{r}
+order(student_scores)
+
+# order(student_scores) returns the positions (index numbers) of the scores
+# arranged in ascending order, such as 5 7 1 3 6 2 4, not the scores themselves.
+# On its own, it is useless because it only tells us where the values are, not
+# what they are. It becomes useful when used to index the vector, like
+# student_scores[order(student_scores)], which rearranges the actual scores.
+```
+
+## Question #7
+
+```{r, error=TRUE}
+sort(student_scores)   # works, because it is a single vector
+sort(students)         # error, because it is a table with several columns
+
+# sort() only works on a single vector, so sort(students) gives an error because
+# a data frame is a table of several columns and sorting a table has no clear
+# meaning. order() is the correct tool because students[order(students$score), ]
+# reorders every column together, keeping each row's name, score, and section
+# lined up.
+```
+
+## Question #8 (rank)
+
+### a. Use rank() and print the result
+
+```{r}
+rank(student_scores)
+
+# Print scores and ranks side by side
+cbind(scores = student_scores, rank = rank(student_scores))
+
+# Ben and Dex both received a rank of 6.5.
+```
+
+### b. Why 6.5?
+
+```{r}
+# Ben and Dex both scored 92, so they are tied for the 6th and 7th positions.
+# By default, rank() uses ties.method = "average", so each gets the average of
+# those positions, (6 + 7) / 2 = 6.5. This is fair because neither student
+# scored higher than the other.
+```
+
+## Question #8 (sales)
+
+### a. Create a data frame and add the rank column
+
+```{r}
+sales <- data.frame(
+  employee = c("Rey", "Sam", "Tin", "Uma", "Val"),
+  units_sold = c(120, 145, 145, 98, 130)
+)
+
+# The minus sign makes the TOP seller receive rank 1
+sales$rank <- rank(-sales$units_sold)
+sales
+```
+
+### b. Reorder from HIGHEST to LOWEST units_sold
+
+```{r}
+sales[order(sales$units_sold, decreasing = TRUE), ]
+```
+
+## Question #9
+
+```{r}
+order(-sales$units_sold)
+rank(-sales$units_sold)
+
+# Not really. order() can reorder the table, but it only gives row positions
+# (2 3 5 1 4), not each employee's standing. What it is missing is the rank
+# itself and the handling of ties: rank() gives Sam and Tin 1.5 each to show
+# they are tied, while order() just lists one after the other.
+```

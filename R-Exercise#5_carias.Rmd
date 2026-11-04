@@ -1,0 +1,179 @@
+---
+title: "R exercise#5"
+author: "Mariane Jamilah Carias"
+date: "2026-10-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Part A - Creating Matrices
+
+```{r}
+m1 <- matrix(1:9, nrow = 3, ncol = 3)
+print(m1)
+```
+
+```{r}
+m2 <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+print(m2)
+```
+
+```{r}
+scores <- matrix(c(88, 92, 79, 95, 84, 90), nrow = 2, ncol = 3, byrow = TRUE)
+rownames(scores) <- c("Quiz1", "Quiz2")
+colnames(scores) <- c("Ana", "Ben", "Cid")
+print(scores)
+```
+
+## Question #1
+
+Normally, R places the numbers into a matrix one column at a time, which is why 1, 2, 3 appear going down the first column of `m1`. Setting `byrow = TRUE` tells R to place them one row at a time instead, so 1, 2, 3 appear going across the first row of `m2`. The values and size stay the same; only the direction of filling changes.
+
+## Question #2
+
+```{r}
+m3 <- matrix(1:8, nrow = 3, ncol = 3)
+print(m3)
+```
+
+R shows a warning that the 8 values do not fit evenly into a 3 x 3 matrix, but it still creates the matrix. To cover the missing ninth slot, R goes back to the start of the data and reuses the number 1. This is called recycling, and it is why the last cell is 1.
+
+# Part B - Subsetting Matrices
+
+```{r}
+scores[1, 2]
+scores[1, ]
+scores[, "Ben"]
+```
+
+```{r}
+scores[scores >= 90]
+```
+
+## Question #3
+
+```{r}
+class(scores[1, ])
+class(scores[, "Ben"])
+```
+
+Both results have the class `"numeric"`, which means R turns a single row or column into a plain named vector. R does this automatically (the `drop = TRUE` default) because a row or column by itself no longer needs two dimensions. A vector is also easier to use in later calculations.
+
+## Question #4
+
+A condition like `scores >= 90` selects only the cells that match, and these can be scattered anywhere, so they cannot form a neat rectangle. Because of this, R gives back a simple vector without the 2D shape or the row and column names. On the other hand, `scores[1, ]` takes a whole row, so the column names still make sense and are kept.
+
+# Part C - Matrix Properties and Operations
+
+```{r}
+dim(scores)
+nrow(scores)
+ncol(scores)
+```
+
+```{r}
+scores_t <- t(scores)
+scores_t
+dim(scores_t)
+dim(scores)
+```
+
+```{r}
+a <- matrix(1:4, nrow = 2)
+b <- matrix(5:8, nrow = 2)
+a + b
+a * b
+```
+
+```{r}
+a %*% b
+a * b
+```
+
+## Question #5
+
+Element-wise multiplication (`a * b`) simply multiplies the numbers that are in the same position in both matrices. Matrix multiplication (`a %*% b`) multiplies each row of `a` with each column of `b` and adds up the products. That is why the answers differ, and why `%*%` needs the number of columns of `a` to equal the number of rows of `b`.
+
+## Question #6
+
+Transposing turns the 2 x 3 matrix `scores` into the 3 x 2 matrix `scores_t`, so rows become columns and columns become rows. The names are labels for those rows and columns, so they have to move along with them. As a result, Quiz1 and Quiz2 become the column names, while Ana, Ben, and Cid become the row names.
+
+# Part D - cbind() and rbind()
+
+```{r}
+scores_v2 <- cbind(scores, Dex = c(85, 91))
+scores_v2
+```
+
+```{r}
+scores_v3 <- rbind(scores, Quiz3 = c(80, 88, 93))
+scores_v3
+```
+
+## Question #7
+
+```{r}
+test <- cbind(scores, c(85, 91, 100))
+test
+```
+
+R returns a warning, not an error, because the 3 values do not match the 2 rows of `scores`. It only keeps the first two values (85 and 91) and drops the 100, so some data is lost. `cbind()` and `rbind()` need matching dimensions since a matrix must be a complete rectangle with no missing or extra cells.
+
+## Question #8
+
+I would use `rbind()` when new records come in with the same variables, such as a daily sales table with columns for Product A, B, and C. Each new day is a new row added to the bottom of the table. This keeps the columns the same and lets the data grow over time, while `cbind()` is for adding a new variable.
+
+# Part E - Arrays: Creating and Subsetting
+
+```{r}
+arr <- array(1:12, dim = c(2, 3, 2))
+arr
+```
+
+```{r}
+arr[1, 2, 2]
+arr[ , , 1]
+```
+
+```{r}
+dim(arr)
+```
+
+## Question #9
+
+The result of `dim(arr)` is 2, 3, 2. The first number is how many rows there are, the second is how many columns, and the third is how many layers (stacked grids). So `arr[row, col, layer]` points to one value using its row, its column, and its layer.
+
+## Question #10
+
+Weekly quiz scores are a good example, with students as the rows, quizzes as the columns, and each week as a layer. A single 2D matrix can only store one week at a time. You would need many separate matrices, instead of keeping everything together in one array.
+
+# Part F - Critical Thinking Challenge
+
+```{r}
+class_a <- matrix(c(85, 90, 78, 92), nrow = 2, byrow = TRUE,
+                  dimnames = list(c("S1", "S2"), c("Midterm", "Final")))
+class_b <- matrix(c(88, 84, 95, 91), nrow = 2, byrow = TRUE,
+                  dimnames = list(c("S3", "S4"), c("Midterm", "Final")))
+
+all_students <- rbind(class_a, class_b)
+all_students
+```
+
+```{r}
+rowMeans(all_students)
+```
+
+## Question #11
+
+I used `rbind()` because the two matrices have the same column names (Midterm and Final) but different row names, which means they are different students taking the same exams. The students are new rows, not new score columns. So stacking them one on top of the other was the correct choice.
+
+## Question #12
+
+I would stack all 5 matrices one after the other using `rbind()`, because they all have the same Midterm and Final columns and each class only adds more students. To check, `dim()` should show 2 columns, and the number of rows should equal the total number of students in all 5 classes. For example, 5 classes with 2 students each should give 10 rows.
+
+# Conclusion
+
+A matrix has only two dimensions (rows and columns), while an array can have three or more, such as extra layers. Both can only store one type of data. `cbind()` and `rbind()` are useful when a dataset keeps growing, like adding new students or new quiz scores to a class record without redoing the whole table.
