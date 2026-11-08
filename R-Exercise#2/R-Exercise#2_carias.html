@@ -11,9 +11,9 @@
 
 <meta name="author" content="Mariane Jamilah Carias" />
 
-<meta name="date" content="2026-10-16" />
+<meta name="date" content="2026-09-30" />
 
-<title>RExercise#3_carias.Rmd</title>
+<title>Rexercise#2_carias</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,88 +350,157 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">RExercise#3_carias.Rmd</h1>
+<h1 class="title toc-ignore">Rexercise#2_carias</h1>
 <h4 class="author">Mariane Jamilah Carias</h4>
-<h4 class="date">2026-10-16</h4>
+<h4 class="date">2026-09-30</h4>
 
 </div>
 
 
-<p>### PART A</p>
-<pre class="r"><code># TODO: Create a numeric vector called scores containing: 88, 92, 79, 95, 84
-# Then create a character vector called subjects containing:
-# &quot;Math&quot;, &quot;Science&quot;, &quot;English&quot;, &quot;History&quot;, &quot;PE&quot;
-scores &lt;- c(88, 92, 79, 95, 84)
-subjects &lt;- c(&quot;Math&quot;, &quot;Science&quot;, &quot;English&quot;, &quot;History&quot;, &quot;PE&quot;)
-scores</code></pre>
-<pre><code>## [1] 88 92 79 95 84</code></pre>
-<pre class="r"><code>subjects</code></pre>
-<pre><code>## [1] &quot;Math&quot;    &quot;Science&quot; &quot;English&quot; &quot;History&quot; &quot;PE&quot;</code></pre>
-<pre class="r"><code># TODO: Use seq() to create a vector called odds containing odd numbers
-# from 1 to 19 (hint: use the &quot;by&quot; argument)
-# TODO: Use seq() with length.out to create a vector of exactly 5 evenly
-# spaced numbers between 0 and 1
-odds &lt;- seq(from = 1, to = 19, by = 2)
-seq(from = 0, to = 1, length.out = 5)</code></pre>
-<pre><code>## [1] 0.00 0.25 0.50 0.75 1.00</code></pre>
-<pre class="r"><code># TODO: Use rep() to create a vector that repeats the value &quot;A&quot; 4 times
-rep(&quot;A&quot;, times = 4)</code></pre>
-<pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot;</code></pre>
-<pre class="r"><code># TODO: Use rep() with the &quot;each&quot; argument to turn c(&quot;A&quot;, &quot;B&quot;) into
-# &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; (each element repeated twice, in order)
-rep(c(&quot;A&quot;, &quot;B&quot;), each = 2)</code></pre>
-<pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot;</code></pre>
-<pre class="r"><code># TODO: Use rep() with the &quot;times&quot; argument to turn c(&quot;A&quot;, &quot;B&quot;) into
-# &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; (the whole sequence repeated twice)
-rep(c(&quot;A&quot;, &quot;B&quot;), times = 2)</code></pre>
-<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</code></pre>
-<div id="question-1" class="section level1">
-<h1>Question #1:</h1>
-<pre class="r"><code># Set up a vector named age, consisting of 15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8.
-age &lt;- c(15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46,
-25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8)</code></pre>
-<pre class="r"><code># a. How many data points?
-length(age) </code></pre>
-<pre><code>## [1] 34</code></pre>
-<pre class="r"><code>#gives 34 data points.</code></pre>
-<pre class="r"><code># b. Find the reciprocal of age?
-1 / age  </code></pre>
-<pre><code>##  [1] 0.06666667 0.03571429 0.03125000 0.02777778 0.03703704 0.05555556
-##  [7] 0.01923077 0.02564103 0.02380952 0.03448276 0.02857143 0.03225806
-## [13] 0.03703704 0.04545455 0.02702703 0.02941176 0.05263158 0.05000000
-## [19] 0.01754386 0.02040816 0.02000000 0.02702703 0.02173913 0.04000000
-## [25] 0.05882353 0.08333333 0.02380952 0.01886792 0.02439024 0.01960784
-## [31] 0.02857143 0.04166667 0.03030303 0.12500000</code></pre>
-<pre class="r"><code>#divides 1 by each number in the age vector.</code></pre>
-<pre class="r"><code># c. Assign also new_age &lt;- c(age, 0, age) . What happens to new_age ?
-new_age &lt;- c(age, 0, age)
-# Answer: it combines age, 0, and age into one vector of length 69.</code></pre>
-<pre class="r"><code># d: Find the minimum and the maximum value of age.
-#The minimum is 8 using min(age), and the maximum is 57 using max(age)</code></pre>
+<div id="part-a---arithmetic-operator" class="section level2">
+<h2>Part A - Arithmetic Operator</h2>
+<pre class="r"><code>a &lt;- 17
+b &lt;- 5
+
+a + b</code></pre>
+<pre><code>## [1] 22</code></pre>
+<pre class="r"><code>a - b</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>a * b</code></pre>
+<pre><code>## [1] 85</code></pre>
+<pre class="r"><code>a / b</code></pre>
+<pre><code>## [1] 3.4</code></pre>
+<pre class="r"><code>a %% b</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>a %/% b</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>2 ^10</code></pre>
+<pre><code>## [1] 1024</code></pre>
+<pre><code>**Question #1:**
+Question #1: Normal division 17 / 5 gives the full decimal answer (3.4), integer division 17 %/% 5 counts how many whole times 5 fits in (3), and modulus 17 %% 5 gives the leftover remainder (2), which together reconstruct 17 ($5 \times 3 + 2$).
+
+**Question #2: My predictions were correct because 3 fits into 10 three times with 1 left over.
+
+## Part B - Basic Data Types
+
+``` r
+ x &lt;- 42
+ y &lt;- 42L
+ z &lt;- &quot;42&quot;
+ w &lt;- TRUE
+ v &lt;- 3 + 2i
+ 
+ typeof(x)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code> typeof(y)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code> typeof(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code> typeof(w)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code> typeof(v)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code> class(x)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code> class(y)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code> class(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code> class(w)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code> class(v) </code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code> mode(x)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code> mode(y)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code> mode(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code> mode(w)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code> mode(v)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<p>Question #3: typeof(x) returns “double” because R stores numbers as
+decimals by default. typeof(y) returns “integer” because adding L to 42L
+tells R to save it specifically as a whole number without decimals.</p>
+<p>Question #4: Yes. typeof() tells you how R stores the data, while
+class() tells you how R handles it. For example, a factor has typeof()
+of “integer” because R stores categories using numbers, but its class()
+is “factor”.</p>
+<p>##Part C - Type Conversion</p>
+<pre class="r"><code>num_string &lt;- &quot;123&quot;
+num_val &lt;- as.numeric(num_string)
+typeof(num_val)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>class(num_val)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>mode(num_val)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>as.logical(0)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>as.logical(1)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>bad_string &lt;- &quot;hello123&quot;
+as.numeric (bad_string)</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Question #5: R gives a warning and outputs NA instead of crashing so
+the script keeps running, but ignoring it can cause missing values to
+silently mess up later calculations.</p>
+<p>Question #6: I correctly predicted that both as.logical(2) and
+as.logical(-1) would return TRUE because R treats zero as FALSE and any
+other number as TRUE.</p>
 </div>
-<div id="question-2" class="section level1">
-<h1>Question #2:</h1>
-<pre class="r"><code># rep(c(&quot;A&quot;, &quot;B&quot;), each = 2) and rep(c(&quot;A&quot;, &quot;B&quot;), times = 2) both produce a vector of length 4, but with different element orders.
-# Explain in your own words the difference between each and times .
-# Answer: each repeats every item two times in a row before moving to the next. times repeats the whole group of items from start to finish.</code></pre>
-<pre class="r"><code># Question #3:
-# Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5) . What does each argument ( by vs length.out ) control, and when would you use one over the other in a real analysis?
-# by sets step size for fixed intervals, length.out sets total point count for fixed samples.</code></pre>
+<div id="part-d---strings-paste-and-paste0" class="section level2">
+<h2>Part D - Strings, paste(), and paste0()</h2>
+<pre class="r"><code>first_name &lt;- &quot;Mariane Jamilah&quot;
+last_name &lt;- &quot;Carias&quot;
+print(first_name)</code></pre>
+<pre><code>## [1] &quot;Mariane Jamilah&quot;</code></pre>
+<pre class="r"><code>print(last_name)</code></pre>
+<pre><code>## [1] &quot;Carias&quot;</code></pre>
+<pre class="r"><code>cat(first_name, last_name) </code></pre>
+<pre><code>## Mariane Jamilah Carias</code></pre>
+<pre class="r"><code>full_name &lt;- paste(first_name, last_name)
+full_name</code></pre>
+<pre><code>## [1] &quot;Mariane Jamilah Carias&quot;</code></pre>
+<pre class="r"><code>paste0(first_name,last_name)</code></pre>
+<pre><code>## [1] &quot;Mariane JamilahCarias&quot;</code></pre>
+<pre class="r"><code>paste0(first_name,last_name, sep = &quot;-&quot;)</code></pre>
+<pre><code>## [1] &quot;Mariane JamilahCarias-&quot;</code></pre>
+<pre class="r"><code>age &lt;- 21
+paste0(full_name, &quot;is&quot;, age, &quot;years old.&quot;)</code></pre>
+<pre><code>## [1] &quot;Mariane Jamilah Cariasis21years old.&quot;</code></pre>
+<p><strong>Question #7:</strong> paste() automatically adds a space
+between text because its default separator is sep = ” “. paste0() joins
+text with no space at all because its default is sep =”“.</p>
+<p><strong>Question #8:</strong> No, it didn’t cause an error. paste0()
+automatically converts numbers to text behind the scenes before
+combining them, which works just like as.character() in Part C.</p>
 </div>
-<div id="question-3" class="section level1">
-<h1>Question #3:</h1>
-<pre class="r"><code># Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5) . What does each argument ( by vslength.out ) control, and when would you use one over the other in a real analysis?
-# by sets how far apart the numbers are, while length.out sets how many total numbers you get.</code></pre>
-</div>
-<div id="question-4" class="section level1">
-<h1>Question #4:</h1>
-<pre class="r"><code># a. Generate a sequence for 20 to 60. Name the vector as vec_num vec_num &lt;- 20:60</code></pre>
-<pre class="r"><code># b. Get the mean for vec_num .
-#mean(vec_num) gives 40.</code></pre>
-<pre class="r"><code># c. Get the sum for vec_num .
-#sum(vec_num) gives 1640.</code></pre>
-<pre class="r"><code># d: How many data points are there in vec_num ?
-#length(vec_num) gives 41 data points.</code></pre>
+<div id="part-e-critical-thinking-challenge" class="section level2">
+<h2>Part E — Critical Thinking Challenge</h2>
+<pre class="r"><code># Prediction: It will throw an error because R cannot add text to a number directly.
+5 + 5</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code># Error in &quot;5&quot; + 5 : non-numeric argument to binary operator
+
+as.numeric(&quot;5&quot;) + 5</code></pre>
+<pre><code>## [1] 10</code></pre>
+<p>Question #9: R makes us convert types manually so it doesn’t
+accidentally guess wrong between doing math to get 10 or combining text
+to get “55”.</p>
+<p>Question #10: R likely read the numbers as text strings, which I
+would fix by checking the type with typeof() and converting the column
+into numbers using as.numeric() before running sum().</p>
+<p>##Conclusion: In this lab, I learned that R assigns specific storage
+types to objects and strictly enforces them instead of doing automatic
+type conversion during operations. Checking types with functions like
+typeof() or class() helps identify whether data is stored as text,
+numeric, or logical before running math functions. Using explicit
+conversion functions like as.numeric() ensures data is properly
+formatted, preventing unexpected errors, warnings, or silent NA values
+during analysis.</p>
 </div>
 
 
